@@ -1,0 +1,96 @@
+# Load GUI assembly
+Add-Type -AssemblyName Microsoft.VisualBasic
+
+# 1. Get Forest Information
+try {
+    $Forest = Get-ADForest
+    $ForestRoot = $Forest.RootDomain
+}
+catch {
+    Write-Error "Unable to connect to Active Directory. Ensure you have appropriate network access."
+    exit
+}
+
+# 2. Prompt for Timeframe
+$DaysInput = [Microsoft.VisualBasic.Interaction]::InputBox("Enter the number of days to look back for new accounts (e.g., 7, 30, 90):", "Creation Timeframe", "30")
+
+# Initialize variable to avoid [ref] errors
+$DaysCount = 0 
+if (-not [int]::TryParse($DaysInput, [ref]$DaysCount)) { 
+    $DaysCount = 30 
+}
+
+# Calculate LDAP Date (GeneralizedTime format)
+$ThresholdDate = (Get-Date).AddDays(-$DaysCount)
+$LdapDate = $ThresholdDate.ToString("yyyyMMddHHmmss.0Z")
+
+$Msg = "Searching entire forest: $($ForestRoot) for accounts created in the last $DaysCount days."
+$Confirm = [Microsoft.VisualBasic.Interaction]::MsgBox($Msg, "OKCancel,Information", "Forest-Wide IAM Audit")
+
+if ($Confirm -ne "OK") { exit }
+
+Write-Host "Connecting to Global Catalog on ${ForestRoot} using port 3268..." -ForegroundColor Cyan
+
+try {
+    # 3. Define the Search Criteria
+    $LdapFilter = "(&(whenCreated>=$LdapDate)(|(extensionAttribute6=*Human Primary Identity SF Match*)(extensionAttribute6=*Human Primary Identity Contractor*)(employeeID=*SVC*)(employeeNumber=*SVC*)(extensionAttribute6=*Service Account*)))"
+
+    # 4. Query the Global Catalog (Port 3268)
+    $Users = Get-ADUser -LDAPFilter $LdapFilter -Server "${ForestRoot}:3268" -Properties `
+        extensionAttribute6, employeeID, employeeNumber, Title, Department, Description, whenCreated, Enabled
+
+    if ($null -eq $Users -or $Users.Count -eq 0) {
+        Write-Warning "No matching accounts found created within the last $DaysCount days."
+    } else {
+        # 5. Process results
+        $Results = $Users | ForEach-Object {
+            $EA6 = $_.extensionAttribute6
+            $EmpID = $_.employeeID
+            $EmpNum = $_.employeeNumber
+
+            # Determine Account Type
+            $Type = switch -Wildcard ($EA6) {
+                "*SF Match*"    { "Primary Employee" }
+                "*Contractor*"  { "Contractor" }
+                "*Service*"     { "Service Account" }
+                Default {
+                    if ($EmpID -like "*SVC*" -or $EmpNum -like "*SVC*") { "Service Account" }
+                    else { "Other/Manual Review" }
+                }
+            }
+
+            # CLEANED: Domain parsing logic to prevent "-join" binding errors
+            $DnParts = $_.DistinguishedName.Split(',') | Where-Object { $_ -like "DC=*" }
+            $CleanDomain = ($DnParts -replace "DC=", "") -join "."
+
+            [PSCustomObject]@{
+                Name            = $_.Name
+                SamAccountName  = $_.SamAccountName
+                AccountType     = $Type
+                Enabled         = $_.Enabled
+                Domain          = $CleanDomain
+                Created         = $_.whenCreated
+                EA6_Value       = $EA6
+                EmployeeID      = $EmpID
+                EmployeeNumber  = $EmpNum
+                Title           = $_.Title
+                Department      = $_.Department
+                DistinguishedName = $_.DistinguishedName
+            }
+        }
+
+        # 6. Output Results
+        Write-Host "Success! Found $($Users.Count) records since $($ThresholdDate.ToShortDateString())." -ForegroundColor Green
+        
+        $Results | Group-Object AccountType -NoElement | Sort-Object Count -Descending | Format-Table Name, Count -AutoSize
+        $Results | Out-GridView -Title "IAM Audit: Created in last $DaysCount days"
+        
+        $Path = "$env:USERPROFILE\Desktop\Forest_IAM_New_Accounts_$(Get-Date -Format 'yyyyMMdd').csv"
+        $Results | Export-Csv -Path $Path -NoTypeInformation -Encoding UTF8
+        Write-Host "Full report exported to Desktop: $Path" -ForegroundColor Yellow
+    }
+}
+catch {
+    # If the error was just the binding issue, this try/catch will now succeed.
+    Write-Error "Error querying Global Catalog: $($_.Exception.Message)"
+}
