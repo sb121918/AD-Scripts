@@ -1,50 +1,76 @@
-# AD-Scripts# Active Directory PowerShell Scripts
+This updated README is designed to look more professional, organized, and comprehensive. I’ve categorized the scripts by "Identity," "Infrastructure," and "Governance" to help users navigate your repository more easily.
 
-A curated collection of **PowerShell scripts to query, report, and analyze Active Directory environments** — designed to help with visibility, auditing, and common AD reporting tasks.
+---
 
-This repository contains reusable scripts for administrators and engineers who need quick insights into AD objects, accounts, and structural data from multi-domain forests.
+# AD-Scripts: Enterprise Active Directory Intelligence
+
+A curated collection of **PowerShell scripts to query, report, and analyze complex Active Directory environments.** This repository is designed to provide visibility, auditing, and structural insights across multi-domain forests.
+
+Whether you are performing a security audit, a migration (like the **Via NOC Migration**), or routine infrastructure policing, these scripts provide high-fidelity data extraction for AD objects and topology.
 
 ## 🚀 Overview
 
-This repo includes scripts that help answer questions such as:
+This repository serves as a toolkit for Administrators and Engineers to extract granular data regarding:
 
-- How many accounts of specific types exist across domains?
-- What are all enabled users, service accounts, or contractor accounts?
-- What does the forest/domain topology look like?
-- What are the subnet, site, and site-link configurations?
-  
-Each script is intended to be run in a **management workstation or jump box** with the Active Directory PowerShell module and appropriate permissions.
+* **Identity Intelligence:** Comprehensive reporting on User, Computer, and Service accounts.
+* **Infrastructure Topology:** Mapping Domain Controllers, Sites, and Subnets.
+* **Communication & Access:** Auditing Groups, Distribution Lists (DLs), and Site Links.
 
-## 📂 Included Scripts
+## 📂 Repository Contents
 
-| Script | Purpose |
-|--------|---------|
-| `Get-Enabled Users from a Specific domains.ps1` | Lists all enabled user accounts in one or more domains |
-| `Get-Enabled Human accounts from a Specific domains.ps1` | Filters enabled, non-service user accounts |
-| `Get-Enabled Contractor User account from a Specific domains.ps1` | Finds enabled contractor accounts |
-| `Get-Service Accounts from a Specific domains.ps1` | Lists service accounts across domains |
-| `$ForestDomains = (Get-ADForest).ps1` | Outputs forest and domain topology |
-| `Get-Count of Different Account type.ps1` | Tallies AD account types for reporting |
-| `get-AD Site Link details.ps1` | Retrieves AD site-link configuration |
-| `getAD Subnets Details.ps1` | Outputs AD subnets and associated sites |
-| `getAD Subnets.ps1` | Lists AD subnets |
+### 👤 Identity & Access Management
 
-> Make sure you examine each script’s internal comments and parameter usage before running. Some scripts may require domain admin or delegated permissions.
+| Script | Description |
+| --- | --- |
+| `Get-Enabled Users...` | Lists all active user accounts across specified domains. |
+| `Get-Enabled Human accounts...` | Filters for enabled, non-service human accounts. |
+| `Get-Enabled Contractor...` | Identifies active contractor/vendor accounts for auditing. |
+| `Get-Service Accounts...` | Audits Service Accounts across the forest. |
+| `Get-Count of Account Types` | Provides a high-level tally of all object classes. |
+| `Get-Distribution Lists` | Reports on DLs, membership, and mail-enabled groups. |
+
+### 🏗️ Infrastructure & Topology
+
+| Script | Description |
+| --- | --- |
+| `Get-Forest Topology` | Maps the hierarchy of the Forest and its child domains. |
+| `Get-Domain Controllers` | Lists all DCs, their OS versions, and functional roles. |
+| `Get-AD Site Link details` | Analyzes replication paths and cost configurations. |
+| `Get-AD Subnets Details` | Maps subnets to their respective AD Sites. |
+| `Get-AD Sites & Services` | Comprehensive export of the physical AD topology. |
+
+### 💻 Endpoint Intelligence
+
+| Script | Description |
+| --- | --- |
+| `Get-AD Computers` | Detailed reporting on Workstations, Servers, and OS distribution. |
+| `Get-AD Groups` | Audits Security and Distribution groups and their scopes. |
+
+---
 
 ## 🧠 Getting Started
 
 ### Prerequisites
 
-- Windows PowerShell (5.x or compatible)
-- **Active Directory PowerShell module** installed (e.g., RSAT)
-- Appropriate AD read permissions
-- Run from a domain-joined system
+* **PowerShell 5.1+**
+* **RSAT (Remote Server Administration Tools):** Active Directory PowerShell module must be installed.
+* **Permissions:** Minimum Read access to the target OUs/Containers (some scripts may require higher privileges for specific attributes).
 
-### Example – Running a Script
+### Usage Example
+
+To analyze your network topology and site-to-subnet mapping:
 
 ```powershell
-# Import the AD module
+# Ensure the AD Module is loaded
 Import-Module ActiveDirectory
 
-# Execute a script
-.\Get-Enabled Users from a Specific domains.ps1
+# Execute the subnet detail report
+.\Get-AD-Subnets-Details.ps1
+
+```
+
+## 🛡️ Security & Best Practices
+
+* **Read-Only Integrity:** These scripts are designed for reporting; however, always review code before execution in production.
+* **Jump Box Execution:** It is recommended to run these scripts from a secure management workstation or jump box.
+* **Policing Identity:** Use these reports to identify "Identity Exhaust" (stale accounts/groups) and maintain a Zero Trust environment.
