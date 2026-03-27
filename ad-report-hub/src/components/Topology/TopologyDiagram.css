@@ -1,0 +1,189 @@
+/* Topology Diagram Styles */
+.topology-diagram-container {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.topology-diagram-canvas {
+  width: 100%;
+  height: 600px;
+}
+
+/* Legend panel */
+.topology-diagram-legend {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 12px 14px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 12px;
+  z-index: 10;
+  max-width: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.topology-diagram-legend h4 {
+  margin: 0 0 8px 0;
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+  color: var(--text-primary);
+  font-size: 11px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-line {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-hint {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Empty state */
+.topology-diagram-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 24px;
+}
+
+.empty-diagram-content {
+  text-align: center;
+}
+
+.empty-diagram-content .empty-diagram-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.empty-diagram-content p {
+  margin: 0 0 8px 0;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.empty-diagram-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.empty-diagram-content ul li {
+  padding: 3px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.empty-diagram-content ul li::before {
+  content: "• ";
+  color: var(--accent-color);
+}
+
+/* Detail panel that shows when clicking a node */
+.topology-node-detail {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 12px 16px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 13px;
+  z-index: 10;
+  max-height: 180px;
+  overflow-y: auto;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.topology-node-detail .detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.topology-node-detail .detail-header h4 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.topology-node-detail .detail-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.topology-node-detail .detail-close:hover {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.topology-node-detail .detail-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.topology-node-detail .detail-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  min-width: 120px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.topology-node-detail .detail-value {
+  color: var(--text-primary);
+  word-break: break-word;
+  font-size: 12px;
+}
+
+/* vis-network navigation buttons styling */
+.topology-diagram-canvas .vis-navigation .vis-button {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+}

@@ -1,0 +1,66 @@
+<svg width="240" height="60" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Brighter gradient for dark theme -->
+    <linearGradient id="shieldGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA"/>
+      <stop offset="100%" style="stop-color:#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="textGradientDark" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#60A5FA"/>
+      <stop offset="100%" style="stop-color:#93C5FD"/>
+    </linearGradient>
+    <!-- Glow effect for dark theme -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3B82F6" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  
+  <!-- Shield Icon -->
+  <g transform="translate(8, 6)" filter="url(#glow)">
+    <!-- Shield shape -->
+    <path d="M24 0 L44 6 L44 22 C44 34 36 42 24 48 C12 42 4 34 4 22 L4 6 Z" 
+          fill="url(#shieldGradientDark)"/>
+    
+    <!-- Key icon inside shield -->
+    <g transform="translate(24, 22)">
+      <!-- Key head (circle) -->
+      <circle cx="-6" cy="0" r="6" fill="none" stroke="white" stroke-width="2.5"/>
+      <circle cx="-6" cy="0" r="2.5" fill="white"/>
+      <!-- Key shaft -->
+      <rect x="-2" y="-1.5" width="14" height="3" rx="1.5" fill="white"/>
+      <!-- Key teeth -->
+      <rect x="8" y="-1.5" width="2.5" height="6" rx="1" fill="white"/>
+      <rect x="4" y="-1.5" width="2" height="4" rx="0.8" fill="white"/>
+    </g>
+    
+    <!-- Small chart bars in corner -->
+    <g transform="translate(32, 8)">
+      <rect x="0" y="6" width="3" height="6" rx="0.5" fill="white" opacity="0.95"/>
+      <rect x="4" y="3" width="3" height="9" rx="0.5" fill="white" opacity="0.95"/>
+      <rect x="8" y="0" width="3" height="12" rx="0.5" fill="white" opacity="0.95"/>
+    </g>
+  </g>
+  
+  <!-- Text: AD Report Hub -->
+  <g transform="translate(62, 0)">
+    <!-- Main title -->
+    <text x="0" y="28" 
+          font-family="'Segoe UI', 'Roboto', -apple-system, Arial, sans-serif" 
+          font-size="24" 
+          font-weight="700" 
+          fill="url(#textGradientDark)"
+          letter-spacing="-0.5">
+      AD Report Hub
+    </text>
+    
+    <!-- Tagline -->
+    <text x="0" y="46" 
+          font-family="'Segoe UI', 'Roboto', -apple-system, Arial, sans-serif" 
+          font-size="11" 
+          font-weight="500" 
+          fill="#9CA3AF"
+          letter-spacing="0.3">
+      Active Directory Reporting
+    </text>
+  </g>
+</svg>

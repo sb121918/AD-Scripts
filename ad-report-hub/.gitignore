@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Production build
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs and debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Optional: keep local domain config out of Git (uncomment if needed)
+# server/config/domains.local.json
+
+# Runtime activity log (created on first API use; may contain account names)
+server/data/activity-logs.json

@@ -1,0 +1,46 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for modern look -->
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0055D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0066FF;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow filter -->
+    <filter id="iconShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Shield shape -->
+  <path d="M 24 2 L 38 7 L 38 17 Q 38 27 33 32 Q 28 37 24 42 Q 20 37 15 32 Q 10 27 10 17 L 10 7 Z" 
+        fill="url(#iconGradient)" 
+        filter="url(#iconShadow)"
+        stroke="#003D99" 
+        stroke-width="0.5"/>
+  
+  <!-- Key symbol inside shield -->
+  <g transform="translate(24, 20)">
+    <!-- Key head -->
+    <circle cx="0" cy="0" r="5" fill="white" opacity="0.95"/>
+    <rect x="-2.5" y="-1.5" width="5" height="3" fill="white" opacity="0.95"/>
+    <!-- Key shaft -->
+    <rect x="2.5" y="-1.2" width="7" height="2.4" fill="white" opacity="0.95" rx="1"/>
+    <!-- Key teeth -->
+    <rect x="8.5" y="-2" width="2" height="4" fill="white" opacity="0.95" rx="0.5"/>
+  </g>
+  
+  <!-- Network/Connection dots (representing AD structure) -->
+  <circle cx="14" cy="10" r="2" fill="white" opacity="0.8"/>
+  <circle cx="34" cy="10" r="2" fill="white" opacity="0.8"/>
+  <circle cx="14" cy="38" r="2" fill="white" opacity="0.8"/>
+  <circle cx="34" cy="38" r="2" fill="white" opacity="0.8"/>
+</svg>

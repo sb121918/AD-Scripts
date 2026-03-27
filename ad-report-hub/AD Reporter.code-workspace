@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "AD-Scripts",
+			"path": "../AD Scripts/AD-Scripts"
+		},
+		{
+			"name": "AD-Scripts-1",
+			"path": "../AD Scripts/AD-Scripts-1"
+		},
+		{
+			"path": "server/scripts"
+		}
+	],
+	"settings": {}
+}

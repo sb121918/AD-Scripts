@@ -1,0 +1,95 @@
+.groups-page h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.report-scope-card {
+  padding: 16px 20px;
+}
+
+.report-scope-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.report-scope-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 240px;
+}
+
+.report-scope-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.report-scope-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.report-scope-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.report-scope-input {
+  min-width: 320px;
+  padding: 10px 14px;
+  border: 1px solid var(--border-input);
+  border-radius: 6px;
+  font-size: 13px;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.report-scope-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.query-panel h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+/* Sortable Headers */
+.sortable-th {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.sortable-th:hover {
+  background-color: var(--accent-light) !important;
+}
+
+.sort-indicator {
+  font-size: 12px;
+  opacity: 0.4;
+  margin-left: 4px;
+}
+
+.sort-indicator.active {
+  opacity: 1;
+  color: var(--accent-primary);
+  font-weight: bold;
+}

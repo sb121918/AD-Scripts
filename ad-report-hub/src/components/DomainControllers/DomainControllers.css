@@ -1,0 +1,255 @@
+.dc-page h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.query-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.query-card {
+  flex: 0 1 250px;
+  max-width: 300px;
+  background: var(--bg-secondary);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.query-card:hover {
+  border-color: var(--accent-primary);
+  background: var(--accent-light);
+}
+
+.query-card.active {
+  border-color: var(--accent-primary);
+  background: var(--accent-light);
+}
+
+.query-card-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.query-card-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.services-matrix th,
+.services-matrix td {
+  text-align: center;
+  padding: 8px 12px;
+  color: var(--text-primary);
+}
+
+.type-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.type-badge.default {
+  background: var(--accent-light);
+  color: var(--accent-primary);
+}
+
+.type-badge.fgpp {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+[data-theme="dark"] .type-badge.fgpp {
+  background: #3d2a0f;
+  color: #ffb74d;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+/* Service Status Matrix Styles */
+.services-matrix {
+  font-size: 13px;
+}
+
+.services-matrix th {
+  font-size: 11px;
+  white-space: nowrap;
+  padding: 10px 6px !important;
+}
+
+.services-matrix td {
+  padding: 8px 6px !important;
+}
+
+/* Service status indicators */
+.service-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.service-status.status-running {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #27ae60;
+}
+
+.service-status.status-stopped {
+  background-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.service-status.status-notinstalled {
+  background-color: rgba(149, 165, 166, 0.15);
+  color: #95a5a6;
+  font-size: 9px;
+}
+
+.service-status.status-noaccess {
+  background-color: rgba(155, 89, 182, 0.2);
+  color: #9b59b6;
+}
+
+.service-status.status-error {
+  background-color: rgba(243, 156, 18, 0.2);
+  color: #f39c12;
+}
+
+.service-status.status-unknown {
+  background-color: rgba(149, 165, 166, 0.15);
+  color: #95a5a6;
+}
+
+/* Overall status badge */
+.overall-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.overall-status.overall-healthy {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #27ae60;
+}
+
+.overall-status.overall-warning {
+  background-color: rgba(243, 156, 18, 0.2);
+  color: #f39c12;
+}
+
+.overall-status.overall-critical {
+  background-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.overall-status.overall-offline {
+  background-color: rgba(52, 73, 94, 0.3);
+  color: #7f8c8d;
+}
+
+.overall-status.overall-unknown {
+  background-color: rgba(149, 165, 166, 0.15);
+  color: #95a5a6;
+}
+
+/* Legend for services table */
+.services-legend {
+  display: flex;
+  gap: 20px;
+  padding: 12px 20px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.legend-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* Trust Direction Styles */
+.trust-direction {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.trust-direction.trust-bidirectional {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+}
+
+.trust-direction.trust-inbound {
+  background-color: rgba(52, 152, 219, 0.15);
+  color: #3498db;
+}
+
+.trust-direction.trust-outbound {
+  background-color: rgba(155, 89, 182, 0.15);
+  color: #9b59b6;
+}
+
+.trust-direction.trust-disabled {
+  background-color: rgba(149, 165, 166, 0.15);
+  color: #95a5a6;
+}
+
+/* Level Badge Styles */
+.level-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.level-badge.level-root {
+  background-color: rgba(241, 196, 15, 0.2);
+  color: #f39c12;
+}
+
+.level-badge.level-child {
+  background-color: rgba(52, 152, 219, 0.15);
+  color: #3498db;
+}

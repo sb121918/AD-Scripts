@@ -1,0 +1,11 @@
+{
+  "domains": [
+    {
+      "name": "corp.contoso.com",
+      "forest": "Contoso",
+      "label": "Contoso — Corp",
+      "requiresElevated": false,
+      "description": "Example production domain — replace with your DNS names"
+    }
+  ]
+}

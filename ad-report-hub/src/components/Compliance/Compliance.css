@@ -1,0 +1,167 @@
+/* Compliance Page Styles */
+.compliance-combined-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: var(--text-primary);
+}
+
+.compliance-page {
+  padding: 0;
+}
+
+.compliance-page .page-header {
+  margin-bottom: 24px;
+}
+
+.compliance-page .page-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.compliance-page .page-icon {
+  font-size: 32px;
+}
+
+.compliance-page .page-title h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.compliance-page .page-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0;
+  padding-left: 44px;
+}
+
+/* Risk Badges */
+.risk-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.risk-badge.critical {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+.risk-badge.high {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+.risk-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.risk-badge.low {
+  background: #dcfce7;
+  color: #166534;
+}
+
+[data-theme="dark"] .risk-badge.critical {
+  background: #450a0a;
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .risk-badge.high {
+  background: #431407;
+  color: #fdba74;
+}
+
+[data-theme="dark"] .risk-badge.medium {
+  background: #451a03;
+  color: #fcd34d;
+}
+
+[data-theme="dark"] .risk-badge.low {
+  background: #052e16;
+  color: #86efac;
+}
+
+/* Delegation type badge */
+.delegation-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.delegation-badge.unconstrained {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+.delegation-badge.constrained {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.delegation-badge.rbcd {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+[data-theme="dark"] .delegation-badge.unconstrained {
+  background: #450a0a;
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .delegation-badge.constrained {
+  background: #451a03;
+  color: #fcd34d;
+}
+
+[data-theme="dark"] .delegation-badge.rbcd {
+  background: #1e1b4b;
+  color: #a5b4fc;
+}
+
+/* Days input */
+.days-input-section {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.days-input-section label {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.days-input-section input {
+  width: 80px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-input);
+  border-radius: 6px;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+/* Orphaned indicator */
+.orphaned-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #fecaca;
+  color: #991b1b;
+}
+
+[data-theme="dark"] .orphaned-badge {
+  background: #450a0a;
+  color: #fca5a5;
+}

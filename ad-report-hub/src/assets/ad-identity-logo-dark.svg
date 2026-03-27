@@ -1,0 +1,68 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Brighter gradient for dark theme -->
+    <linearGradient id="logoGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow filter for dark theme -->
+    <filter id="shadowDark" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Icon: Shield with Key (Identity/Security) -->
+  <g transform="translate(5, 8)">
+    <!-- Shield shape -->
+    <path d="M 20 0 L 35 5 L 35 15 Q 35 25 30 30 Q 25 35 20 40 Q 15 35 10 30 Q 5 25 5 15 L 5 5 Z" 
+          fill="url(#logoGradientDark)" 
+          filter="url(#shadowDark)"
+          stroke="#93C5FD" 
+          stroke-width="0.5"/>
+    
+    <!-- Key symbol inside shield -->
+    <g transform="translate(20, 15)">
+      <!-- Key head -->
+      <circle cx="0" cy="0" r="4" fill="white" opacity="0.98"/>
+      <rect x="-2" y="-1" width="4" height="2" fill="white" opacity="0.98"/>
+      <!-- Key shaft -->
+      <rect x="2" y="-0.8" width="6" height="1.6" fill="white" opacity="0.98" rx="0.8"/>
+      <!-- Key teeth -->
+      <rect x="7" y="-1.5" width="1.5" height="3" fill="white" opacity="0.98" rx="0.5"/>
+    </g>
+    
+    <!-- Network/Connection dots (representing AD structure) -->
+    <circle cx="12" cy="8" r="1.5" fill="white" opacity="0.9"/>
+    <circle cx="28" cy="8" r="1.5" fill="white" opacity="0.9"/>
+    <circle cx="12" cy="32" r="1.5" fill="white" opacity="0.9"/>
+    <circle cx="28" cy="32" r="1.5" fill="white" opacity="0.9"/>
+  </g>
+  
+  <!-- Text: AD Identity -->
+  <g transform="translate(50, 0)">
+    <!-- Main text -->
+    <text x="0" y="25" font-family="'Segoe UI', 'Roboto', Arial, sans-serif" 
+          font-size="20" font-weight="700" 
+          fill="url(#logoGradientDark)" 
+          letter-spacing="-0.5px">
+      AD Identity
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="42" font-family="'Segoe UI', 'Roboto', Arial, sans-serif" 
+          font-size="11" font-weight="500" 
+          fill="#9CA3AF" 
+          letter-spacing="0.5px">
+      Management Tool
+    </text>
+  </g>
+</svg>
